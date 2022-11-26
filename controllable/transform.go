@@ -3,6 +3,7 @@ package controllable
 import (
 	"sync"
 
+	"github.com/df-mc/dragonfly/server/block/cube"
 	"github.com/df-mc/dragonfly/server/world"
 	"github.com/go-gl/mathgl/mgl64"
 )
@@ -16,7 +17,7 @@ type Transform struct {
 }
 
 // newTransform creates a new transform to embed for the world.Entity passed.
-func NewTransform(e world.Entity, pos mgl64.Vec3) Transform {
+func newTransform(e world.Entity, pos mgl64.Vec3) Transform {
 	return Transform{e: e, pos: pos}
 }
 
@@ -43,8 +44,8 @@ func (t *Transform) SetVelocity(v mgl64.Vec3) {
 	t.vel = v
 }
 
-// Rotation always returns 0.
-func (t *Transform) Rotation() (float64, float64) { return 0, 0 }
+// Rotation always returns an empty cube.Rotation.
+func (t *Transform) Rotation() cube.Rotation { return cube.Rotation{} }
 
 // World returns the world of the entity.
 func (t *Transform) World() *world.World {
