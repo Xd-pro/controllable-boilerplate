@@ -17,7 +17,7 @@ type Transform struct {
 }
 
 // newTransform creates a new transform to embed for the world.Entity passed.
-func newTransform(e world.Entity, pos mgl64.Vec3) Transform {
+func NewTransform(e world.Entity, pos mgl64.Vec3) Transform {
 	return Transform{e: e, pos: pos}
 }
 
